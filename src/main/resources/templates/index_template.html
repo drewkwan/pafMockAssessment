@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <body>
+        <h1>Todo List</h1>
+        <h2>Add your tasks here!</h2>
+
+        <form action="/todo" method="post">
+            <table>
+                <tr>
+                    <td>username: </td>
+                    <td><span data-th-text="${user.username}"></span></td>
+                    <td><input type="hidden" name="username" th:value="${user.username}"></td>
+                </tr>
+                    <td>Name: </td>
+                    <td><span data-th-text="${user.fullName}"></span></td>
+                    <td><input type="hidden" name= "fullName" th:value="${user.fullName}"></td>
+                <tr>
+                    <td>Task Description: </td>
+                    <td><input type="text" name="description" required></td>
+                </tr>
+                <tr>
+                    <td>Priority: </td>
+                    <td>
+                        <select name="priority">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select></td>
+                </tr>
+                <tr>
+                    <td>Due Date: </td>
+                    <td><input type="date" name="dueDate" required></td>
+                </tr>
+            </table>
+            <button type="submit">Add Todo</button>
+        </form>
+        <h2>Todo List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th></th>
+                    <th>Priority</th>
+                    <th></th>
+                    <th>Due date</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                    <tr data-th-each="task:${tasks}">
+                        <form action="/todo/delete" method="post">
+                        <td><span data-th-text="${task.description}"></span></td>
+                        <td><input type="hidden" name="description" th:value="${task.description}"></td>
+                        <td><span data-th-text="${task.priority}"></span></td>
+                        <td><input type="hidden" name="priority" th:value="${task.priority}"></td>
+                        <td><span data-th-text="${task.dueDate}"></span></td>
+                        <td><input type="hidden" name="dueDate" th:value ="${task.dueDate}"></td>
+                        <td>
+                            <button type="submit">Delete</button>
+
+                        </td>
+                    </form>
+                    </tr>
+                
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>
+                        <form action="/todo/save" method="post">
+                            <button type="submit">Save</button>
+                        </form>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+
+    </body>
+</html>

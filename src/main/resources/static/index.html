@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <body>
+        <h1>Todo List</h1>
+        <h2>Add your tasks here!</h2>
+
+        <form action="/todo" method="post">
+            <table>
+                <tr>
+                    <td>username: </td>
+                    <td><input type="text" name="username" required></td>
+                </tr>
+                <tr>
+                    <td>Name: </td>
+                    <td><input type="text" name="fullName" required></td>
+                </tr>
+                <tr>
+                    <td>Task Description: </td>
+                    <td><input type="text" name="description" required></td>
+                </tr>
+                <tr>
+                    <td>Priority: </td>
+                    <td>
+                        <select name="priority">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select></td>
+                </tr>
+                <tr>
+                    <td>Due Date: </td>
+                    <td><input type="date" name="dueDate" required></td>
+                </tr>
+            </table>
+            <button type="submit">Add Todo</button>
+        </form>
+
+    </body>
+</html>
